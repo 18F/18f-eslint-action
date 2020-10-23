@@ -1,0 +1,12 @@
+name: 18F eslint
+description: Runs eslint using the 18F standard configuration on a set of files
+inputs:
+  path:
+    description: Path glob to run eslint against. Defaults to the project root if empty.
+    required: false
+    default: .
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.path }}
