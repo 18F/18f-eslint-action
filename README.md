@@ -21,7 +21,7 @@ jobs:
     container: node:14
     steps:
       - uses: actions/checkout@af513c7a
-      - uses: 18f/18f-eslint-action@1.0.0
+      - uses: 18f/18f-eslint-action@v1.0.0
 ```
 
 In a super simple project, that might be all you need. From now on, all of your
@@ -36,7 +36,7 @@ for linting by setting its inputs. Inputs are set by adding them under a `with`
 property in the `uses` block for the action:
 
 ```yml
-- uses: 18f/18f-eslint-action@1.0.0
+- uses: 18f/18f-eslint-action@v1.0.0
   with:
     lint_glob: **/*.js
     working_directory: src
