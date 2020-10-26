@@ -52,11 +52,11 @@ property in the `uses` block for the action:
     working-directory: src
 ```
 
-| variable          | default | what it does                                                                                                       |
-|-------------------|---------|--------------------------------------------------------------------------------------------------------------------|
-| lint-glob         | `.`     | Indicates what files to run eslint on. This is any single glob that eslint supports.                               |
-| only-changed      | `false` | Indicates whether to only run eslint on changed files. Must be `true` to enable. This will override `lint-glob`.   |
-| working-directory | `.`     | Indicates where to install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This path must include package.json. |
+| variable          | default | what it does                                                                                                                                   |
+|-------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| lint-glob         | `.`     | Indicates what files to run eslint on. This is any single glob that eslint supports.                                                           |
+| only-changed      | `false` | Indicates whether to only run eslint on changed files. Must be `true` to enable. This will override `lint-glob`.                               |
+| working-directory | `.`     | Indicates where to install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This must be the directory where your `package.json` is located. |
 
 The `only-changed` variable is useful for existing projects, so you can apply
 eslint only on files as you change them rather than having to update the whole
