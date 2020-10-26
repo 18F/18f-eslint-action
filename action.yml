@@ -1,12 +1,16 @@
 name: 18F eslint
 description: Runs eslint using the 18F standard configuration on a set of files
 inputs:
-  working-directory:
-    description: The working directory to begin from. This should be the directory that contains your package.json.
-    required: false
-    default: .
   lint-glob:
     description: Path glob to run eslint against. Defaults to the project root if empty.
+    required: false
+    default: .
+  only-changed:
+    description: Whether to limit linting to just the changed files. Must be "true" to enable. Overrides lint-glob, if provided.
+    required: false
+    default: false
+  working-directory:
+    description: The working directory to begin from. This should be the directory that contains your package.json.
     required: false
     default: .
 runs:
@@ -15,3 +19,4 @@ runs:
   args:
     - ${{ inputs.working-directory }}
     - ${{ inputs.lint-glob }}
+    - ${{ inputs.only-changed }}

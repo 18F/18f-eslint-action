@@ -2,12 +2,8 @@
 
 A GitHub action for running the
 [18F configuration of ESLint](https://github.com/18F/18f-eslint) on your project
-nice and easily. Here's a sample workflow to get you started, or visit GitHub's
-[documentation on workflow syntax](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)
-for more information.
-
-The simplest way to get this action installed into your repo is by using the
-action installer:
+nice and easily. The simplest way to get this action installed into your repo is
+by using the action installer:
 
 ```shell
 npx -p @18f/18f-eslint install-action
@@ -15,7 +11,7 @@ npx -p @18f/18f-eslint install-action
 
 (**NOTE** the `-p` - this is required in order to run non-default commands.)
 
-This commend will begin at the root of your git repo, walk through your
+This command will begin at the root of your git repo, walk through your
 directory tree looking for `package.json` files, and add a step to lint the
 directories where each one is located. Once the basic action is installed, you
 can then go tweak the configuration.
@@ -56,10 +52,18 @@ property in the `uses` block for the action:
     working-directory: src
 ```
 
-| variable          | default | what it does                                                                                                    |
-|-------------------|---------|-----------------------------------------------------------------------------------------------------------------|
-| lint-glob         | `.`     | Indicates what files to run eslint on. This is any single glob that eslint supports.                            |
-| working-directory | `.`     | Indicates where install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This path must include package.json. |
+| variable          | default | what it does                                                                                                       |
+|-------------------|---------|--------------------------------------------------------------------------------------------------------------------|
+| lint-glob         | `.`     | Indicates what files to run eslint on. This is any single glob that eslint supports.                               |
+| only-changed      | `false` | Indicates whether to only run eslint on changed files. Must be `true` to enable. This will override `lint-glob`.   |
+| working-directory | `.`     | Indicates where to install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This path must include package.json. |
+
+The `only-changed` variable is useful for existing project, so you can apply
+eslint only on files as you change them rather than having to update the whole
+project at once. Incremental linting!
+
+Visit GitHub's [documentation on workflow syntax](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)
+for more information about configuring your workflow.
 
 ## Notes about action refs
 
