@@ -6,8 +6,22 @@ nice and easily. Here's a sample workflow to get you started, or visit GitHub's
 [documentation on workflow syntax](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)
 for more information.
 
-Add a new Yaml file to your project's `.github/workflows/` directory with
-something like this in it:
+The simplest way to get this action installed into your repo is by using the
+action installer:
+
+```shell
+npx -p @18f/18f-eslint install-action
+```
+
+(**NOTE** the `-p` - this is required in order to run non-default commands.)
+
+This commend will begin at the root of your git repo, walk through your
+directory tree looking for `package.json` files, and add a step to lint the
+directories where each one is located. Once the basic action is installed, you
+can then go tweak the configuration.
+
+The action configuration is in a yaml file to your project's
+`.github/workflows/` directory with something like this in it:
 
 ```yml
 name: lint action
@@ -38,14 +52,14 @@ property in the `uses` block for the action:
 ```yml
 - uses: 18f/18f-eslint-action@v1.0.0
   with:
-    lint_glob: **/*.js
-    working_directory: src
+    lint-glob: **/*.js
+    working-directory: src
 ```
 
 | variable          | default | what it does                                                                                                    |
 |-------------------|---------|-----------------------------------------------------------------------------------------------------------------|
-| lint_glob         | `.`     | Indicates what files to run eslint on. This is any single glob that eslint supports.                            |
-| working_directory | `.`     | Indicates where install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This path must include package.json. |
+| lint-glob         | `.`     | Indicates what files to run eslint on. This is any single glob that eslint supports.                            |
+| working-directory | `.`     | Indicates where install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This path must include package.json. |
 
 ## Notes about action refs
 
