@@ -29,7 +29,7 @@ if [ $3 == "true" ]; then
   # files it doesn't understand and it'll just complain.
   CHANGED=$(
     git diff --diff-filter=ACMR --name-only --relative origin/${GIT_MAIN} -- . |
-    grep -e \.js$ -e \.jsx$ -e \.es6$
+    grep -e "\.js$" -e "\.jsx$" -e "\.es6$"
   )
 
   # Now back to bailing out if there's an error.
