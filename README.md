@@ -58,7 +58,7 @@ property in the `uses` block for the action:
 | only-changed      | `false` | Indicates whether to only run eslint on changed files. Must be `true` to enable. This will override `lint-glob`.   |
 | working-directory | `.`     | Indicates where to install [@18f/18f-eslint](https://npm.im/@18f/18f-eslint). This path must include package.json. |
 
-The `only-changed` variable is useful for existing project, so you can apply
+The `only-changed` variable is useful for existing projects, so you can apply
 eslint only on files as you change them rather than having to update the whole
 project at once. Incremental linting!
 
