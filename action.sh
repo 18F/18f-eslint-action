@@ -22,19 +22,22 @@ if [ $3 == "true" ]; then
   # bail out in that case, so temporarily allow the script to continue even if
   # there is a non-zero exit.
   set +e
+
+  # Get just the JS files that have changed. We're searching on file extensions,
+  # and we include a few that come up from time to time in our projects. We have
+  # to filter this list down because eslint doesn't have an option to ignore
+  # files it doesn't understand and it'll just complain.
   CHANGED=$(
     git diff --diff-filter=ACMR --name-only --relative origin/${GIT_MAIN} -- . |
     grep -e \.js$ -e \.jsx$ -e \.es6$
   )
+
+  # Now back to bailing out if there's an error.
   set -e
 
   if [ -n "$CHANGED" ]; then
     npm install @18f/18f-eslint@^1.1.0
 
-    # Get just the JS files that have changed. We're searching on file extensions,
-    # and we include a few that come up from time to time in our projects. We have
-    # to filter this list down because eslint doesn't have an option to ignore files
-    # it doesn't understand
     npx @18f/18f-eslint $(
       echo $CHANGED |
       xargs
